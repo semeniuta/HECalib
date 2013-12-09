@@ -57,6 +57,7 @@ if __name__ == '__main__':
     stats.print_statistics(s_optimal)
     
     plt.figure()
+    plt.title('Intial and optimized norm distributions for data from %s' % os.path.basename(datafile))
     plt.xlabel('Values of ||AX-XB|| norms')
     plt.ylabel('Frequency')
     plt.hist(norms_initial[1], 100, color="gray", label='Original X')
