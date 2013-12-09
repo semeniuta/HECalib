@@ -22,3 +22,4 @@ def print_statistics(s):
     
 def print_statistics_header():
     print 'min\tmean\tmax\tvar\tstdev'
+    
