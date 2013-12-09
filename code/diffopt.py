@@ -16,14 +16,15 @@ import cPickle as pickle
 if __name__ == '__main__':
     
     targets = ['min', 'mean', 'max', 'var']
-
-    print 'Reading data files...'
-    datafile = params.datafiles[0]
+    
+    datafile = params.datafiles[2]
+    print 'Reading data file %s...' % datafile
     pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile, calc_AB_func=olrem.calc_AB_ML)
      
     for t in targets:    
         print '\nCurrent target: %s' % t
-        pickle_file = opj(params.datadir, 'opt_%s.pickle' % t)
+        f = os.path.basename(datafile).split('.')[0]
+        pickle_file = opj(params.datadir, 'opt_%s_%s.pickle' % (t, f))
         if os.path.exists(pickle_file):
             print 'Unpicking data...'
             with open(pickle_file, 'rb') as f: 

@@ -17,11 +17,15 @@ import cPickle as pickle
 
 if __name__ == '__main__':
 
-    print 'Reading data files...'
-    datafile = params.datafiles[0]
+    target = 'mean'
+    
+    datafile = params.datafiles[2]
+    f = os.path.basename(datafile).split('.')[0]
+    
+    print 'Reading data file %s ...' % datafile
     pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile, calc_AB_func=olrem.calc_AB_ML)
     
-    pickle_file = opj(params.datadir, 'opt_mean.pickle')
+    pickle_file = opj(params.datadir, 'opt_%s_%s.pickle' % (target, f))
     
     if os.path.exists(pickle_file):
         print 'Unpicking data...'
