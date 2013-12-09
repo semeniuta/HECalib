@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+'''
+Process several data files 
+(calculate calibration results, norms and other parameters)
+'''
+
 import params
 import olrem
 import os
@@ -25,7 +30,8 @@ if __name__ == '__main__':
         print 'Results of processing data from %s' % fname
         print res[0]['X']
         print res[1]['X']
-#        resprocess.print_res(res)
-#        r_pm, r_tl = resprocess.sort_by_ratios(res)
-#        print r_pm
-#        print r_tl
+        
+        resprocess.print_res(res)
+        r_pm, r_tl = resprocess.sort_by_ratios(res)
+        print r_pm
+        print r_tl

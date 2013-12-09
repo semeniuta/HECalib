@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+'''
+Perform optimization with different objectives
+'''
+
 import olrem
 from optimize import HandEyeOptimizer
 import params

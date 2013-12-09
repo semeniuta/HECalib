@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+'''
+Compute and display statistics
+'''
+
 import numpy as np
 
 def calc_statistics(sample):

@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+''' 
+Test the results of matrices multiplication and subtractions
+using numpy arrays and math3d.Transfrom objects
+'''
+
 import params
 import olrem
 

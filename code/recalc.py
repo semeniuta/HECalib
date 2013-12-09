@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+''' 
+Recalculate the calibration results using ParkMartinCalibrator
+after removing outliners
+'''
+
 import stats
 import params
 import olrem

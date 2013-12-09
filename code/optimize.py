@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+''' 
+Optimize the result of hand-eye calibration
+'''
+
 import params
 import olrem
 import stats

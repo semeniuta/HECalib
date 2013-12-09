@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+
+'''
+Create histograms of the processed data (norms, ratios)
+'''
+
 import diffcalib
 import params
 from matplotlib import pyplot as plt

@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+'''
+Interaction with ParkMartinCalibrator object
+'''
+
 import numpy as np
 
 def get_calibration_result(pairs, CalibratorClass):

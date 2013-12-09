@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+'''
+Process the results of olrem.process_pairs function
+'''
+
 def print_res(res):
     print 'Number\tPark-Martin\tTsai-Lenz\tRatio(PM)\tRatio(TL)'
     cal1, cal2 = res

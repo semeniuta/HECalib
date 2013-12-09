@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
+'''
+Set parameters
+'''
+
 import numpy as np
 from park_martin_calibration import ParkMartinCalibrator
 from tsai_lenz_calibration import TsaiLenzCalibrator
-from os.path import join as opj
 from glob import glob
 
 datadir = r'../data'
