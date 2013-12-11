@@ -31,7 +31,7 @@ def compare(datafile, target):
     norms_initial = olrem.calc_norms(AB, XInititial, params.norm_func)    
     norms_optimal = olrem.calc_norms(AB, XOptimal, params.norm_func)
     
-    return norms_initial, norms_optimal, opt
+    return norms_initial[1], norms_optimal[1], opt
 
 def create_comparison_histogram(norms_initial, norms_optimal, opt, datafile):
     plt.figure()
@@ -47,21 +47,21 @@ def create_comparison_histogram(norms_initial, norms_optimal, opt, datafile):
 if __name__ == '__main__':
 
     target = 'mean'
-    datafile = params.datafiles[1]
+    datafile = params.datafiles[2]
         
     norms_initial, norms_optimal, opt = compare(datafile, target)
     
     print opt.XInitial
     print opt.XOptimal    
     
-    s_initial = stats.calc_statistics(norms_initial[1])
-    s_optimal = stats.calc_statistics(norms_optimal[1])
+    s_initial = stats.calc_statistics(norms_initial)
+    s_optimal = stats.calc_statistics(norms_optimal)
     
     stats.print_statistics_header()
     stats.print_statistics(s_initial)    
     stats.print_statistics(s_optimal)
     
-    create_comparison_histogram(norms_initial[1], norms_optimal[1], opt, datafile)
+    create_comparison_histogram(norms_initial, norms_optimal, opt, datafile)
     
     
     
