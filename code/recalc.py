@@ -28,18 +28,15 @@ def calc_avg_min_max_norms(norms):
     s = stats.calc_statistics(norms)
     return s['mean'], s['min'], s['max']
     
-def filter_indices(pairs, norms, top_limit):
-    filtered_indices = olrem.filter_pairs(pairs, norms, lambda x: x < top_limit)
-    return filtered_indices
-        
 if __name__ == '__main__':
     
-    datafile = params.datafiles[0]
+    datafile = params.datafiles[2]
     pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile, calc_AB_func=olrem.calc_AB_ML)
     res = olrem.process_pairs(pairs, AB, AB_pairs, ParkMartinCalibrator, params.norm_func)
         
     ''' Try Park-Martin calibration with new pairs '''
-    filtered_indices = filter_indices(pairs, res['norms'], top_limit=0.4)
+    top_limit = 0.7
+    filtered_indices = filtered_indices = olrem.filter_pairs(res['norms'], lambda x: x < top_limit)
     
     pmc = ParkMartinCalibrator(pairs)
     new_X = recalculate_X(pmc)

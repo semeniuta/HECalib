@@ -131,7 +131,7 @@ def process_pairs(pairs, AB, AB_pairs, CalibratorClass, norm_func):
     
     return res_dict
     
-def filter_pairs(pairs, norms, criterion):
+def filter_pairs(norms, criterion):
     accepted_indices = []    
     for i in range(len(norms)):
         norm = norms[i]

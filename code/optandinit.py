@@ -47,7 +47,7 @@ def create_comparison_histogram(norms_initial, norms_optimal, opt, datafile):
 if __name__ == '__main__':
 
     target = 'mean'
-    datafile = params.datafiles[0]
+    datafile = params.datafiles[1]
         
     norms_initial, norms_optimal, opt = compare(datafile, target)
     

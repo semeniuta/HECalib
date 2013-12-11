@@ -31,7 +31,7 @@ if __name__ == '__main__':
         print res[0]['X']
         print res[1]['X']
         
-        resprocess.print_res(res)
-        r_pm, r_tl = resprocess.sort_by_ratios(res)
-        print r_pm
-        print r_tl
+#        resprocess.print_res(res)
+#        r_pm, r_tl = resprocess.sort_by_ratios(res)
+#        print r_pm
+#        print r_tl
