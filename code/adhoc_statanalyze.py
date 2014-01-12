@@ -2,7 +2,7 @@
 
 import optandinit as oi
 import params
-from scipy import stats
+from scipy from helpers import stats
 
 if __name__ == '__main__':
 

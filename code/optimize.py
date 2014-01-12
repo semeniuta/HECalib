@@ -6,9 +6,9 @@ Optimize the result of hand-eye calibration
 
 import params
 import olrem
-import stats
+from helpers import stats
 import calibinteract
-from park_martin_calibration import ParkMartinCalibrator
+from tcpcalibrators.park_martin_calibration import ParkMartinCalibrator
 import math3d as m3d
 from scipy.optimize import minimize
 import numpy as np

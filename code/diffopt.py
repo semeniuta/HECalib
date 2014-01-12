@@ -8,7 +8,7 @@ import olrem
 from optimize import HandEyeOptimizer
 import params
 import math3d as m3d
-import stats
+from helpers import stats
 import os
 from os.path import join as opj
 import cPickle as pickle

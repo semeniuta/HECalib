@@ -5,10 +5,10 @@ Recalculate the calibration results using ParkMartinCalibrator
 after removing outliners
 '''
 
-import stats
+from helpers import stats
 import params
 import olrem
-from park_martin_calibration import ParkMartinCalibrator
+from tcpcalibrators.park_martin_calibration import ParkMartinCalibrator
 import numpy as np
 
 def recalculate_X(pmc):
