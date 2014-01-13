@@ -5,10 +5,6 @@ Recalculate the calibration results using ParkMartinCalibrator
 after removing outliners
 '''
 
-from helpers import stats
-import params
-import olrem
-from tcpcalibrators.park_martin_calibration import ParkMartinCalibrator
 import numpy as np
 
 def recalculate_X(pmc, good_indices):
@@ -23,10 +19,6 @@ def update_move_pairs(pmc, good_indices):
     for ind in good_indices:
         good_move_pairs.append(move_pairs[ind])
     pmc._move_pairs = np.array(good_move_pairs)
-    
-def calc_avg_min_max_norms(norms):
-    s = stats.calc_statistics(norms)
-    return s['mean'], s['min'], s['max']
     
 
         

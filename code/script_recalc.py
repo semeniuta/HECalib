@@ -3,7 +3,12 @@
 import recalc
 import params
 import olrem
+from helpers import stats
 from tcpcalibrators.park_martin_calibration import ParkMartinCalibrator
+
+def calc_avg_min_max_norms(norms):
+    s = stats.calc_statistics(norms)
+    return s['mean'], s['min'], s['max']
 
 if __name__ == '__main__':
     
