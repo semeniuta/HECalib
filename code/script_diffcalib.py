@@ -8,7 +8,7 @@ Process several data files
 import diffcalib
 import params
 import os
-import resprocess
+from helpers import resprocess
 import olrem
 
 def read_and_process_pairs_for_different_calibrators(datafile):
