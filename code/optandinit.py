@@ -17,7 +17,7 @@ def compare(datafile, target):
     f = os.path.basename(datafile).split('.')[0]
     
     print 'Reading data file %s ...' % datafile
-    pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile, calc_AB_func=olrem.calc_AB_ML)
+    pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile)
     
     pickle_file = opj(params.datadir, 'opt_%s_%s.pickle' % (target, f))
     

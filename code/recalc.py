@@ -31,7 +31,7 @@ def calc_avg_min_max_norms(norms):
 if __name__ == '__main__':
     
     datafile = params.datafiles[2]
-    pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile, calc_AB_func=olrem.calc_AB_ML)
+    pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile)
     res = olrem.process_pairs(pairs, AB, AB_pairs, ParkMartinCalibrator, params.norm_func)
         
     ''' Try Park-Martin calibration with new pairs '''

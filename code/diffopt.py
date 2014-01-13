@@ -19,7 +19,7 @@ if __name__ == '__main__':
     
     datafile = params.datafiles[2]
     print 'Reading data file %s...' % datafile
-    pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile, calc_AB_func=olrem.calc_AB_ML)
+    pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile)
      
     for t in targets:    
         print '\nCurrent target: %s' % t

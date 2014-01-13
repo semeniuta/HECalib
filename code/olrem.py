@@ -15,17 +15,20 @@ def read_pairs(pairs_datafile):
     pairs = np.load(pairs_datafile)
     return pairs  
     
-def read_pairs_and_calc_AB(pairs_datafile, calc_AB_func):
+def read_pairs_and_calc_AB(pairs_datafile):
     ''' 
     Read the (R, V) pairs from the datafiles and calculate
     the corresponding (A, B) pairs using the specified function
     '''
     pairs = read_pairs(pairs_datafile)
-    AB, AB_pairs = calc_AB_func(pairs)
+    AB, AB_pairs = calc_AB(pairs)
     return pairs, AB, AB_pairs   
 
-def calc_AB_ML(pairs):
-
+def calc_AB(pairs):
+    ''' 
+    Calculate A and B matrices for each of the (R, V) pairs:
+    Ai = inv(Ri-1) * Ri
+    '''
     res_AB = []
     res_pairs = []
     
@@ -42,47 +45,6 @@ def calc_AB_ML(pairs):
             res_pairs.append((i, j))
     
     return res_AB, res_pairs
-    
-def calc_AB(pairs):
-    ''' 
-    Calculate A and B matrices for each of the (R, V) pairs:
-    Ai = inv(Ri-1) * Ri
-    '''      
-    res_AB = []
-    res_pairs = []
-
-    for i in range(1, len(pairs)):
-        R, V = pairs[i]
-        Rprev, Vprev = pairs[i-1]
-        
-        A = Rprev.inverse() * R
-        B = Vprev.inverse() * V
-
-        res_AB.append((A, B))
-        res_pairs.append((i-1, i))
-
-    return res_AB, res_pairs
-    
-def calc_AB_firstpair(pairs):
-    ''' 
-    Calculate A and B matrices by comparing each (R, V) pair
-    with the first (R, V) pair:
-    Ai = inv(R0) * Ri
-    '''
-    res_AB = []
-    res_pairs = []
-    
-    R0, V0 = pairs[0]
-    for i in range(1, len(pairs)):
-        R, V = pairs[i]
-        
-        A = R0.inverse() * R
-        B = V0.inverse() * V
-
-        res_AB.append((A, B))
-        res_pairs.append((0, i))
-
-    return res_AB, res_pairs   
     
 def calc_norms(AB, X, norm_func):
     ''' 

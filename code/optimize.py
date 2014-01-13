@@ -81,7 +81,7 @@ if __name__ == '__main__':
     
     ''' Open data file and calculate X matrix using ParkMartinCalibrator '''
     datafile = params.datafiles[0]
-    pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile, calc_AB_func=olrem.calc_AB_ML)
+    pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile)
     opt = HandEyeOptimizer(pairs, AB)
     opt.perform_optimization(verbose=False)
     
