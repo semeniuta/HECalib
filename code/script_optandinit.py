@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import optandinit
+from optimization import optandinit
 import params
 from helpers import stats
 

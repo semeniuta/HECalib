@@ -6,7 +6,7 @@ Perform optimization with different objectives
 
 import argparse
 import olrem
-from optimize import HandEyeOptimizer
+from optimization.optimize import HandEyeOptimizer
 import params
 import math3d as m3d
 from helpers import stats

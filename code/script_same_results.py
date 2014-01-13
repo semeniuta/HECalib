@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import optandinit as oi
+from optimization import optandinit as oi
 import params
-import calibinteract
+from tcpcalibrators import calibinteract
 
 if __name__ == '__main__':
     target = 'mean'

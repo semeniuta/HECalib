@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import optandinit as oi
+from optimization import optandinit as oi
 import params
 from scipy import stats
 
@@ -15,13 +15,5 @@ if __name__ == '__main__':
     n2 = norms_optimal[1]
     
     stats.describe(n1)
-    
-        
-    
-    
-
-    
-    
-    
     
     
