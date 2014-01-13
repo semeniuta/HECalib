@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import diffcalib
+import params
+import os
+import resprocess
 
 if __name__ == '__main__':
     results = {}   

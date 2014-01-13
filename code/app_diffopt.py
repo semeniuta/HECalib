@@ -4,6 +4,7 @@
 Perform optimization with different objectives
 '''
 
+import argparse
 import olrem
 from optimize import HandEyeOptimizer
 import params
@@ -15,9 +16,13 @@ import cPickle as pickle
 
 if __name__ == '__main__':
     
+    parser = argparse.ArgumentParser()
+    parser.add_argument('fnumber')
+    args = parser.parse_args()
+    
     targets = ['min', 'mean', 'max', 'var']
     
-    datafile = params.datafiles[2]
+    datafile = params.datafiles[int(args.fnumber)]
     print 'Reading data file %s...' % datafile
     pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile)
      

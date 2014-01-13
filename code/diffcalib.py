@@ -7,8 +7,6 @@ Process several data files
 
 import params
 import olrem
-import os
-import resprocess
 
 def read_and_process_pairs_for_different_calibrators(datafile):
     pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile)

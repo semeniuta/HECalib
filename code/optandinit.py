@@ -8,7 +8,6 @@ and the optimized one
 import olrem
 import params
 from matplotlib import pyplot as plt
-from helpers import stats
 import os
 from os.path import join as opj
 import cPickle as pickle

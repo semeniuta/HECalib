@@ -14,7 +14,15 @@ from scipy.optimize import minimize
 import numpy as np
 
 class HandEyeOptimizer:
-    
+    '''
+    Usage example:
+        
+    datafile = params.datafiles[0]
+    pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile)
+    opt = optimize.HandEyeOptimizer(pairs, AB)
+    opt.perform_optimization(verbose=False)
+    '''    
+
     minimization_target = 'mean' 
     opt_method = 'nelder-mead'
     
