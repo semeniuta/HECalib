@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+'''
+Remove outliners and see how it affects the result
+'''
+
 import recalc
 import params
 import olrem
@@ -18,7 +22,7 @@ if __name__ == '__main__':
         
     ''' Try Park-Martin calibration with new pairs '''
     top_limit = 0.7
-    filtered_indices = filtered_indices = recalc.filter_pairs(res['norms'], lambda x: x < top_limit)
+    filtered_indices = recalc.filter_pairs(res['norms'], lambda x: x < top_limit)
     
     pmc = ParkMartinCalibrator(pairs)
     new_X = recalc.recalculate_X(pmc, filtered_indices)
@@ -27,8 +31,8 @@ if __name__ == '__main__':
     old_norms = res['norms']
     
     print '\tavg\tmin\tmax'
-    print 'Old:\t%.2f\t%.2f\t%.2f' % recalc.calc_avg_min_max_norms(old_norms)   
-    print 'New:\t%.2f\t%.2f\t%.2f' % recalc.calc_avg_min_max_norms(new_norms)
+    print 'Old:\t%.2f\t%.2f\t%.2f' % calc_avg_min_max_norms(old_norms)   
+    print 'New:\t%.2f\t%.2f\t%.2f' % calc_avg_min_max_norms(new_norms)
     
     print '\nMatrix X (old):'
     print res['X']

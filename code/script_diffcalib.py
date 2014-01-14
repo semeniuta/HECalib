@@ -5,7 +5,6 @@ Process several data files
 (calculate calibration results, norms and other parameters)
 '''
 
-import diffcalib
 import params
 import os
 from helpers import resprocess
@@ -25,7 +24,7 @@ def read_and_process_pairs_for_different_calibrators(datafile):
 if __name__ == '__main__':
     results = {}   
     for f in params.datafiles:
-        pairs, AB, res = diffcalib.read_and_process_pairs_for_different_calibrators(f)   
+        pairs, AB, res = read_and_process_pairs_for_different_calibrators(f)   
         fname = os.path.basename(f)        
         results[fname] = res 
                

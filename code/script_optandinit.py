@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+'''
+For the given data file, optimized distribution of X is unpicked
+and compared with the original one
+'''
+
 from optimization import optandinit
 import params
 from helpers import stats
