@@ -18,7 +18,7 @@ if __name__ == '__main__':
         
     ''' Try Park-Martin calibration with new pairs '''
     top_limit = 0.7
-    filtered_indices = filtered_indices = olrem.filter_pairs(res['norms'], lambda x: x < top_limit)
+    filtered_indices = filtered_indices = recalc.filter_pairs(res['norms'], lambda x: x < top_limit)
     
     pmc = ParkMartinCalibrator(pairs)
     new_X = recalc.recalculate_X(pmc, filtered_indices)

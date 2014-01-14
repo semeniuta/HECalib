@@ -92,16 +92,6 @@ def process_pairs(pairs, AB, AB_pairs, CalibratorClass, norm_func):
     }
     
     return res_dict
-    
-def filter_pairs(norms, criterion):
-    accepted_indices = []    
-    for i in range(len(norms)):
-        norm = norms[i]
-        if criterion(norm):
-            accepted_indices.append(i)
-    return accepted_indices
 
-def create_filtering_criterion(top_limit):
-    return lambda norm: norm < top_limit
     
             
