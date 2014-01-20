@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 class Position:
-    R = None
-    V = None
+    def __init__(self, R, V):
+        self.R = R
+        self.V = V
     
     

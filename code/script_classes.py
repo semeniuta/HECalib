@@ -2,8 +2,10 @@
 
 import olrem
 import params
+from classes.dataset import TCPCalibDataSet
 
 datafile = params.datafiles[0]
 
-pairs = olrem.read_pairs(datafile)
-AB = olrem.calc_AB(pairs)
+ds = TCPCalibDataSet()
+ds.read_file(datafile)
+
