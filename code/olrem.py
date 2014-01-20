@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Remove outliners from the pairs of the (R, V) pairs
+Remove outliers from the pairs of the (R, V) pairs
 needed for further hand-eye calibration
 '''
 

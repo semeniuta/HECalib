@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Remove outliners and see how it affects the result
+Remove outliers and see how it affects the result
 '''
 
 import recalc

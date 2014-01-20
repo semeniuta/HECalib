@@ -2,7 +2,7 @@
 
 ''' 
 Recalculate the calibration results using ParkMartinCalibrator
-after removing outliners
+after removing outliers
 '''
 
 import numpy as np
