@@ -8,6 +8,7 @@ import recalc
 import params
 import olrem
 from helpers import stats
+from matplotlib import pyplot as plt
 from tcpcalibrators.park_martin_calibration import ParkMartinCalibrator
 
 def calc_avg_min_max_norms(norms):
@@ -21,7 +22,7 @@ if __name__ == '__main__':
     res = olrem.process_pairs(pairs, AB, AB_pairs, ParkMartinCalibrator, params.norm_func)
         
     ''' Try Park-Martin calibration with new pairs '''
-    top_limit = 0.7
+    top_limit = 0.5
     filtered_indices = recalc.filter_pairs(res['norms'], lambda x: x < top_limit)
     
     pmc = ParkMartinCalibrator(pairs)
@@ -39,3 +40,7 @@ if __name__ == '__main__':
     
     print '\nMatrix X (new):'
     print new_X
+    
+    plt.figure()
+    plt.hist(old_norms, 100, color='blue')
+    plt.hist(new_norms, 100, color='green')
