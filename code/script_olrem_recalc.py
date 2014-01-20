@@ -4,7 +4,7 @@
 Remove outliers and see how it affects the result
 '''
 
-import recalc
+import recalc_old as recalc
 import params
 import olrem
 from helpers import stats
