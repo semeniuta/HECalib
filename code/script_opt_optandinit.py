@@ -12,7 +12,7 @@ from helpers import stats
 if __name__ == '__main__':
 
     target = 'mean'
-    datafile = params.datafiles[2]
+    datafile = params.datafiles[0]
         
     norms_initial, norms_optimal, opt = optandinit.compare(datafile, target)
     
