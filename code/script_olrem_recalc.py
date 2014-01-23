@@ -10,7 +10,6 @@ import olrem
 from helpers import stats
 from matplotlib import pyplot as plt
 from hecalibrators.park_martin_calibration import ParkMartinCalibrator
-from hecalibrators import calibinteract as ci
 
 def calc_avg_min_max_norms(norms):
     s = stats.calc_statistics(norms)
@@ -18,21 +17,37 @@ def calc_avg_min_max_norms(norms):
 
 if __name__ == '__main__':
     
+    ''' 
+    Open data file with pose pairs (R, V) and calculate all 
+    transformations (A, B)
+    '''    
     datafile = params.datafiles[2]
-    pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(datafile)
-    old_X = ci.get_calibration_result(pairs, ParkMartinCalibrator)
+    pose_pairs, AB, combinations = olrem.read_pairs_and_calc_AB(datafile)
+    
+    '''
+    Perform calibration with ALL transformations and calculate norms 
+    of |AX-XB| matrix
+    '''
+    old_pmc = ParkMartinCalibrator(pose_pairs)    
+    old_X = old_pmc.sensor_in_flange
     old_matrices, old_norms = olrem.calc_norms(AB, old_X, params.norm_func)
         
-    ''' Try Park-Martin calibration with new pairs '''
+    ''' 
+    Filter out some of the transformations based on specified criterion
+    '''
     top_limit = 0.5
     filtered_indices = recalc.filter_pairs(old_norms, lambda x: x < top_limit)
     
-    pmc = ParkMartinCalibrator(pairs)
-    pmc.update_move_pairs(filtered_indices)
-    new_X = pmc.sensor_in_flange
-    
+    '''
+    Perform calibration without filtered transformations and calculate norms 
+    of |AX-XB| matrix
+    '''
+    new_pmc = ParkMartinCalibrator(pose_pairs)
+    new_pmc.update_move_pairs(filtered_indices)
+    new_X = new_pmc.sensor_in_flange    
     new_matrices, new_norms = olrem.calc_norms(AB, new_X, params.norm_func)
     
+    ''' Compare the difference '''
     print '\tavg\tmin\tmax'
     print 'Old:\t%.2f\t%.2f\t%.2f' % calc_avg_min_max_norms(old_norms)   
     print 'New:\t%.2f\t%.2f\t%.2f' % calc_avg_min_max_norms(new_norms)
