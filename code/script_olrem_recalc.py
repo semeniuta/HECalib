@@ -28,7 +28,8 @@ if __name__ == '__main__':
     filtered_indices = recalc.filter_pairs(old_norms, lambda x: x < top_limit)
     
     pmc = ParkMartinCalibrator(pairs)
-    new_X = recalc.recalculate_X(pmc, filtered_indices)
+    pmc.update_move_pairs(filtered_indices)
+    new_X = pmc.sensor_in_flange
     
     new_matrices, new_norms = olrem.calc_norms(AB, new_X, params.norm_func)
     

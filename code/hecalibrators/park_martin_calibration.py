@@ -280,4 +280,12 @@ class ParkMartinCalibrator(object):
             else:
                 self._sensor_in_flange = m3d.Transform(self.orient_sif, self.pos_sif)
         return self._sensor_in_flange
+        
+    def update_move_pairs(self, good_indices):
+        move_pairs = list(self._move_pairs)
+        good_move_pairs = []
+        for ind in good_indices:
+            good_move_pairs.append(move_pairs[ind])
+        self._move_pairs = np.array(good_move_pairs)
+        self._invalidate()
 
