@@ -9,7 +9,7 @@ import params
 import olrem
 from helpers import stats
 from matplotlib import pyplot as plt
-from tcpcalibrators.park_martin_calibration import ParkMartinCalibrator
+from hecalibrators.park_martin_calibration import ParkMartinCalibrator
 
 def calc_avg_min_max_norms(norms):
     s = stats.calc_statistics(norms)

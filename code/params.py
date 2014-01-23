@@ -5,8 +5,8 @@ Set parameters
 '''
 
 import numpy as np
-from tcpcalibrators.park_martin_calibration import ParkMartinCalibrator
-from tcpcalibrators.tsai_lenz_calibration import TsaiLenzCalibrator
+from hecalibrators.park_martin_calibration import ParkMartinCalibrator
+from hecalibrators.tsai_lenz_calibration import TsaiLenzCalibrator
 from glob import glob
 
 datadir = r'../data'

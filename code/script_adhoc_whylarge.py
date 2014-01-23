@@ -7,7 +7,7 @@ using numpy arrays and math3d.Transfrom objects
 
 import params
 import olrem
-from tcpcalibrators import calibinteract as ci
+from hecalibrators import calibinteract as ci
 
 CalibratorClass = params.calibrator_classes[0]
 pairs, AB, AB_pairs = olrem.read_pairs_and_calc_AB(params.datafiles[0])

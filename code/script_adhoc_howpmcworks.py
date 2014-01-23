@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from tcpcalibrators.park_martin2 import ParkMartinCalibrator
+from hecalibrators.park_martin2 import ParkMartinCalibrator
 import params
 import olrem
 

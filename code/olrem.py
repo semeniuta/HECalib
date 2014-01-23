@@ -6,7 +6,7 @@ needed for further hand-eye calibration
 '''
 
 import numpy as np
-from tcpcalibrators import calibinteract as ci
+from hecalibrators import calibinteract as ci
 
 def read_pairs(pairs_datafile):
     '''

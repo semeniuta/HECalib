@@ -6,7 +6,7 @@ Check whether for each datafile, the optimized results are the same
 
 from optimization import optandinit as oi
 import params
-from tcpcalibrators import calibinteract
+from hecalibrators import calibinteract
 
 if __name__ == '__main__':
     target = 'mean'
