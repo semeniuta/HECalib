@@ -32,6 +32,8 @@ def calc_AB(pairs):
             Rprev, Vprev = pair_0
             A = Rprev.inverse() * R
             B = Vprev.inverse() * V
+            #A = R.inverse() * Rprev
+            #B = V * Vprev.inverse()
             res_AB.append((A, B))
             res_pairs.append((i, j))
     

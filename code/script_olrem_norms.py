@@ -21,7 +21,7 @@ if __name__ == '__main__':
     Open data file with pose pairs (R, V) and calculate all 
     transformations (A, B)
     '''    
-    datafile = params.datafiles[2]
+    datafile = params.datafiles[0]
     pose_pairs, AB, combinations = olrem.read_pairs_and_calc_AB(datafile)
     
     '''

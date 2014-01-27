@@ -57,7 +57,7 @@ import math3d as m3d
 #         self._fib_pattern = flange_file_pattern
 #         self._dir = directory
 
-class _Move(object):
+class _MoveOld(object):
     """A move is a convenience class that computes and keeps a
     relative transform between two transforms. For convenience it
     stores the corresponding rotation as a rotation vector."""
@@ -68,7 +68,7 @@ class _Move(object):
         self.rot = self.move.orient.rotation_vector.data
         
         
-class _Move2(object):
+class _Move(object):
     """A move is a convenience class that computes and keeps a
     relative transform between two transforms. For convenience it
     stores the corresponding rotation as a rotation vector."""
@@ -165,8 +165,8 @@ class ParkMartinCalibrator(object):
                     #move_pairs.append((_Move(pp0[0], pp[0]), _Move(pp0[1], pp[1])))
 
                     #correct:
-                    A = _Move2(pp0[0], pp[0], lambda start, end: end.inverse() * start)
-                    B = _Move2(pp0[1], pp[1], lambda start, end: end * start.inverse())
+                    A = _Move(pp0[0], pp[0], lambda start, end: end.inverse() * start)
+                    B = _Move(pp0[1], pp[1], lambda start, end: end * start.inverse())
                     move_pairs.append((A, B))
                     
                 #Added option;
@@ -307,4 +307,3 @@ class ParkMartinCalibrator(object):
             good_move_pairs.append(move_pairs[ind])
         self._move_pairs = np.array(good_move_pairs)
         self._invalidate()
-

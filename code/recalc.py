@@ -5,11 +5,11 @@ Recalculate the calibration results using ParkMartinCalibrator
 after removing outliers
 '''
     
-def filter_pairs(norms, criterion):
+def filter_pairs(iterable, criterion):
     accepted_indices = []    
-    for i in range(len(norms)):
-        norm = norms[i]
-        if criterion(norm):
+    for i in range(len(iterable)):
+        el = iterable[i]
+        if criterion(el):
             accepted_indices.append(i)
     return accepted_indices
 
