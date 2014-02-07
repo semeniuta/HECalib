@@ -38,30 +38,6 @@ def calc_AB(pairs):
             res_pairs.append((i, j))
     
     return res_AB, res_pairs
-    
-def calc_AB2(pairs):
-    ''' 
-    Calculate A and B matrices for each of the (R, V) pairs:
-    Ai = inv(Ri-1) * Ri
-    '''
-    res_AB = []
-    res_pairs = []
-    
-    n = len(pairs)
-    for i in range(n-1):
-        pair_0 = pairs[i]
-        for j in range(i+1, n):
-            pair_1 = pairs[j]
-            R, V = pair_1
-            Rprev, Vprev = pair_0
-            
-            A = R.inverse() * Rprev
-            B = V * Vprev.inverse()
-            
-            res_AB.append((A, B))
-            res_pairs.append((i, j))
-    
-    return res_AB, res_pairs
 
 def read_pairs_and_calc_AB(pairs_datafile):
     ''' 
