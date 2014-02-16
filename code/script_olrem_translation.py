@@ -12,7 +12,6 @@ import olrem
 import recalc
 from matplotlib import pyplot as plt
 from hecalibrators.park_martin_calibration import ParkMartinCalibrator as PMC
-from hecalibrators.park_martin_calibration2 import ParkMartinCalibrator as PMC2
 
 def get_translation_vector(M):
     ''' Last column without the leading "1" '''
@@ -26,21 +25,14 @@ if __name__ == '__main__':
     datafile = params.datafiles[0]
     pose_pairs = olrem.read_pairs(datafile)
     AB, combinations = olrem.calc_AB(pose_pairs)
-    AB2, combinations2 = olrem.calc_AB2(pose_pairs)
     
     calib = PMC(pose_pairs)     
     X = calib.sensor_in_flange
-    
-    calib2 = PMC2(pose_pairs)     
-    X2 = calib.sensor_in_flange
-    
+
     lengths = [calc_vector_len(get_translation_vector(A)) for A, B in AB]    
-    lengths2 = [calc_vector_len(get_translation_vector(A)) for A, B in AB2]    
     plt.plot(sorted(lengths))
-    plt.plot(sorted(lengths2))
     
     matrices, norms = olrem.calc_norms(AB, X, params.norm_func)
-    matrices2, norms2 = olrem.calc_norms(AB2, X2, params.norm_func)
 
     top_limit = 700
     filtered_indices = recalc.filter_pairs(lengths, lambda x: x < top_limit)
@@ -50,7 +42,9 @@ if __name__ == '__main__':
     new_X = new_pmc.sensor_in_flange    
     new_matrices, new_norms = olrem.calc_norms(AB, new_X, params.norm_func)
     
+    print '\nMatrix X (old):'
     print X
+    print '\nMatrix X (new):'
     print new_X
     
     
