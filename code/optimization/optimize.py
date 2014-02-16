@@ -7,7 +7,7 @@ Optimize the result of hand-eye calibration
 import params
 import olrem
 from helpers import stats
-from tcpcalibrators import calibinteract
+from helpers import m3dinteract as m3di
 from tcpcalibrators.park_martin_calibration import ParkMartinCalibrator
 import math3d as m3d
 from scipy.optimize import minimize
@@ -38,7 +38,7 @@ class HandEyeOptimizer:
         ''' Flatten the X matrix and take the first 12 elements 
         (excluding the first row [0, 0, 0, 1]) for their usage as
         the initial values of optimization factors '''    
-        self.x0 = calibinteract.extract(X0).flatten()[:12]
+        self.x0 = m3di.extract(X0).flatten()[:12]
         
     def perform_optimization(self, verbose=False):
         ''' 

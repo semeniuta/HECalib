@@ -7,6 +7,7 @@ needed for further hand-eye calibration
 
 import numpy as np
 from hecalibrators import calibinteract as ci
+from helpers import m3dinteract as m3di
 
 def read_pairs(pairs_datafile):
     '''
@@ -64,7 +65,7 @@ def calc_norms(AB, X, norm_func):
     for A, B in AB:        
         Z1 = A * X        
         Z2 = X * B
-        Z = ci.extract(Z1) - ci.extract(Z2)
+        Z = m3di.extract(Z1) - m3di.extract(Z2)
         norm = norm_func(Z)
         
         norms.append(norm)

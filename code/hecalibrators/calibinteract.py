@@ -4,8 +4,6 @@
 Interaction with ParkMartinCalibrator object
 '''
 
-import numpy as np
-
 def get_calibration_result(pairs, CalibratorClass):
     '''
     Get the result of hand-eye calibration (X matrix)
@@ -13,14 +11,6 @@ def get_calibration_result(pairs, CalibratorClass):
     '''
     calibrator = CalibratorClass(pairs)
     return calibrator.sensor_in_flange
-    
-def extract(orig):
-    '''
-    Extracts a matrix as a NumPy array
-    from a math3d object
-    '''
-    rot_matrix = orig.matrix
-    return np.array(rot_matrix)  
     
 def extract_AB(calibrator_object):
     '''

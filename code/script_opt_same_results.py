@@ -6,7 +6,7 @@ Check whether for each datafile, the optimized results are the same
 
 from optimization import optandinit as oi
 import params
-from hecalibrators import calibinteract
+from helpers import m3dinteract as m3di
 
 if __name__ == '__main__':
     target = 'mean'
@@ -25,6 +25,6 @@ if __name__ == '__main__':
     print 'Optimized X matrices'    
     print xopt_list
     
-    flatten = lambda m3d_obj: calibinteract.extract(m3d_obj).flatten()   
+    flatten = lambda m3d_obj: m3di.extract(m3d_obj).flatten()   
     xinit_flattened = [flatten(x) for x in xinit_list]
     xopt_flattened = [flatten(x) for x in xopt_list]

@@ -47,4 +47,16 @@ if __name__ == '__main__':
     print '\nMatrix X (new):'
     print new_X
     
+    ''' R*X*inv(V) '''
+    object_to_base = [R*X*V.inverse() for R, V in pose_pairs]        
+    object_to_base_new = [R*new_X*V.inverse() for R, V in pose_pairs]
+    
+    
+    
+    
+    
+         
+    
+    
+    
     
