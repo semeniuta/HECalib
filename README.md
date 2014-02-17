@@ -9,6 +9,9 @@ The following transformations configurations is used in HECalib (arrows indicate
 
 ![Transformations](https://raw.github.com/semeniuta/HECalib/master/img/transformations.png)
 
+R2 = R1 * A; A = inv(R1) * R2
+V2 = V1 * B; B = inv(V1) * V2
+
 
 
 
