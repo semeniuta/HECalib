@@ -7,11 +7,15 @@ the robot arm are very high" (p. 6)
 '''
 
 import math
+import numpy as np
 import params
 import olrem
 import recalc
 from matplotlib import pyplot as plt
 from hecalibrators.park_martin_calibration import ParkMartinCalibrator as PMC
+from helpers import m3dinteract as m3di
+import scipy
+from outliers import precision
 
 def get_translation_vector(M):
     ''' Last column without the leading "1" '''
@@ -30,7 +34,7 @@ if __name__ == '__main__':
     X = calib.sensor_in_flange
 
     lengths = [calc_vector_len(get_translation_vector(A)) for A, B in AB]    
-    plt.plot(sorted(lengths))
+    #plt.plot(sorted(lengths))
     
     matrices, norms = olrem.calc_norms(AB, X, params.norm_func)
 
@@ -45,11 +49,17 @@ if __name__ == '__main__':
     print '\nMatrix X (old):'
     print X
     print '\nMatrix X (new):'
-    print new_X
+    print new_X    
     
-    ''' R*X*inv(V) '''
-    object_to_base = [R*X*V.inverse() for R, V in pose_pairs]        
-    object_to_base_new = [R*new_X*V.inverse() for R, V in pose_pairs]
+    '''Calculate object to base transform: R*X*inv(V) '''
+    object_to_base = precision.get_oib_data(pose_pairs, X)
+    object_to_base_new = precision.get_oib_data(pose_pairs, new_X)
+    
+    precision.print_var(object_to_base, object_to_base_new)
+    precision.print_mean(object_to_base, object_to_base_new)
+    
+    
+    
     
     
     

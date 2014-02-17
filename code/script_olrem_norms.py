@@ -10,6 +10,7 @@ import olrem
 from helpers import stats
 from matplotlib import pyplot as plt
 from hecalibrators.park_martin_calibration import ParkMartinCalibrator
+from outliers import precision
 
 def calc_avg_min_max_norms(norms):
     s = stats.calc_statistics(norms)
@@ -35,7 +36,7 @@ if __name__ == '__main__':
     ''' 
     Filter out some of the transformations based on specified criterion
     '''
-    top_limit = 0.5
+    top_limit = 0.7
     filtered_indices = recalc.filter_pairs(old_norms, lambda x: x < top_limit)
     
     '''
@@ -47,7 +48,9 @@ if __name__ == '__main__':
     new_X = new_pmc.sensor_in_flange    
     new_matrices, new_norms = olrem.calc_norms(AB, new_X, params.norm_func)
     
+
     ''' Compare the difference '''
+    '''    
     print '\tavg\tmin\tmax'
     print 'Old:\t%.2f\t%.2f\t%.2f' % calc_avg_min_max_norms(old_norms)   
     print 'New:\t%.2f\t%.2f\t%.2f' % calc_avg_min_max_norms(new_norms)
@@ -61,3 +64,11 @@ if __name__ == '__main__':
     plt.figure()
     plt.hist(old_norms, 100, color='blue')
     plt.hist(new_norms, 100, color='green')
+    '''
+    
+    '''Calculate object to base transform: R*X*inv(V) '''
+    object_to_base = precision.get_oib_data(pose_pairs, old_X)
+    object_to_base_new = precision.get_oib_data(pose_pairs, new_X)
+    
+    precision.print_var(object_to_base, object_to_base_new)
+    precision.print_mean(object_to_base, object_to_base_new)
