@@ -18,3 +18,6 @@ if __name__ == '__main__':
     
     precision.print_var(noe.old_object_in_base, noe.new_object_in_base)
     precision.print_mean(noe.old_object_in_base, noe.new_object_in_base)
+    
+    df = precision.get_oib_data_pandas(noe.new_object_in_base)
+    
