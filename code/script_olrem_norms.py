@@ -21,6 +21,11 @@ if __name__ == '__main__':
     v1, v2 = precision.precision_test(noe, top_limits)
     diff = v1 - v2
     s = diff['d1'] + diff['d2'] + diff['d3']
+    
+    plt.figure()    
+    plt.plot(top_limits, diff['d1'])
+    plt.plot(top_limits, diff['d2'])
+    plt.plot(top_limits, diff['d3'])
     plt.plot(top_limits, s)
     
     
