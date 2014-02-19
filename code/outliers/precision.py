@@ -49,7 +49,6 @@ def precision_test(noe, top_limits, components=['d1', 'd2', 'd3']):
         vars_1.append(current_vars_1)
         vars_2.append(current_vars_2)
         
-    print 'constructing dataframes'
     vars_df_1 = pd.DataFrame(np.array(vars_1), columns=components, index=top_limits)
     vars_df_2 = pd.DataFrame(np.array(vars_2), columns=components, index=top_limits)    
     
