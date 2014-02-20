@@ -31,6 +31,7 @@ class NormsOutliersEliminator:
         Filter out some of the transformations based on specified criterion
         '''
         filtered_indices = recalc.filter_pairs(self.old_norms, lambda x: x < top_limit)
+        print filtered_indices
         
         '''
         Perform calibration without filtered transformations and calculate norms 
