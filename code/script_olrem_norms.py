@@ -18,21 +18,28 @@ if __name__ == '__main__':
     
     top_limits = [0.01*i for i in range(34, math.trunc(100*max(noe.old_norms)))]
     
-    target_values = []    
-    for tlim in top_limits:    
-        noe.remove_outliers(tlim)
-    
-        df1 = precision.get_oib_data_pandas(noe.old_object_in_base)
-        df2 = precision.get_oib_data_pandas(noe.new_object_in_base)
+    v1, v2 = precision.precision_test(noe, top_limits)
+
+    for d in ['d1', 'd2', 'd3']:
+        plt.figure()
+        plt.plot(top_limits, v1[d], label='old var(%s)' % d)
+        plt.plot(top_limits, v2[d], label='new var(%s)' % d)
         
-        components = ['d1', 'd2', 'd3']
-        var_diffs = [df1[c].var() - df2[c].var() for c in components]        
-        target = sum(var_diffs)
-        target_values.append(target)
-        print tlim, target
         
-    plt.figure()
-    plt.plot(top_limits, target_values)
+        
+    ''' Proposition for the aggregated indicator '''
+    #diff = v1 - v2
+    diff = v2 / v1
+    s = diff['d1'] + diff['d2'] + diff['d3']
+#    plt.figure()    
+#    plt.plot(top_limits, diff['d1'], label='d1')
+#    plt.plot(top_limits, diff['d2'], label='d2')
+#    plt.plot(top_limits, diff['d3'], label='d3')
+#    plt.plot(top_limits, s, label='Sum of variances')
+#    plt.legend()
+#    plt.title('Decrese in varince after outliers elimination')
+#    plt.xlabel('Top limit')
+#    plt.ylabel('Decrese in varince')
     
     
     
