@@ -27,5 +27,4 @@ class NormsOutliersEliminator(BasicOutliersEliminator):
         new_matrices, self.new_norms = olrem.calc_norms(self.AB, self.new_sif, params.norm_func)
         
         '''Calculate object to base transform: R*X*inv(V) '''
-        self.old_object_in_base = precision.get_oib_data(self.pose_pairs, self.old_sif)
         self.new_object_in_base = precision.get_oib_data(self.pose_pairs, self.new_sif)

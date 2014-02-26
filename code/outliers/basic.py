@@ -3,6 +3,7 @@
 import params
 import olrem
 from hecalibrators.park_martin_calibration import ParkMartinCalibrator
+import precision
 
 class BasicOutliersEliminator:
     def __init__(self, datafile):
@@ -20,4 +21,7 @@ class BasicOutliersEliminator:
         old_pmc = ParkMartinCalibrator(self.pose_pairs)    
         self.old_sif = old_pmc.sensor_in_flange
         old_matrices, self.old_norms = olrem.calc_norms(self.AB, self.old_sif, params.norm_func)
+        
+        '''Calculate object to base transform: R*X*inv(V) '''
+        self.old_object_in_base = precision.get_oib_data(self.pose_pairs, self.old_sif)
         
