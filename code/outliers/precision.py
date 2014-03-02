@@ -4,6 +4,8 @@ from helpers import m3dinteract as m3di
 import numpy as np
 import pandas as pd
 
+COLNAMES = ['r11', 'r12', 'r13', 'r21', 'r22', 'r23', 'r31', 'r32', 'r33', 'd1', 'd2', 'd3']
+
 def calc_object_in_base(R, V, X):
     '''
     Compute the "object in base" matrix for the given pose pair (R and V
@@ -30,14 +32,13 @@ def get_oib_data_pandas(oib_data):
     'r11', 'r12', 'r13', 'r21', 'r22', 'r23', 'r31', 'r32', 'r33',
     'd1', 'd2', 'd3'
     '''
-    colnames = ['r11', 'r12', 'r13', 'r21', 'r22', 'r23', 'r31', 'r32', 'r33', 'd1', 'd2', 'd3']
-    return pd.DataFrame(oib_data, columns=colnames)
+    return pd.DataFrame(oib_data, columns=COLNAMES)
     
 def get_variances(oib, components):
     df = get_oib_data_pandas(oib)
     return [df[c].var() for c in components]
 
-def precision_test(noe, top_limits, components=['d1', 'd2', 'd3']):
+def precision_test(noe, top_limits, components=COLNAMES):
     
     vars_1 = []
     vars_2 = []    
@@ -53,5 +54,9 @@ def precision_test(noe, top_limits, components=['d1', 'd2', 'd3']):
     vars_df_2 = pd.DataFrame(np.array(vars_2), columns=components, index=top_limits)    
     
     return vars_df_1, vars_df_2
+    
+def abs_value_test(noe, top_limits):
+    pass
+    
     
     

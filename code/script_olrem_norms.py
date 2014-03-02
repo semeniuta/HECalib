@@ -17,30 +17,17 @@ if __name__ == '__main__':
     noe = NormsOutliersEliminator(datafile)    
     print noe.old_norms    
     
-    # top_limits = [0.001*i for i in range(500, math.trunc(1000*max(noe.old_norms)))]    
     top_limits = [0.01*i for i in range(50, math.trunc(100*max(noe.old_norms)))]
     
     ''' Variances '''    
-    v1, v2 = precision.precision_test(noe, top_limits)
+    v1, v2 = precision.precision_test(noe, top_limits, components=['d1', 'd2', 'd3'])
 
     ''' Cumulative varinces '''
     s1 = v1['d1'] + v1['d2'] + v1['d3']
     s2 = v2['d1'] + v2['d2'] + v2['d3']
 
     index_min = s2.index[s2.argmin()]
-    
-    '''
-    for d in ['d1', 'd2', 'd3']:
-        plt.figure()
-        plt.plot(top_limits, v1[d], label='old var(%s)' % d)
-        plt.plot(top_limits, v2[d], label='new var(%s)' % d)
-        plt.legend()
-        plt.xlabel('Value of threshold')
-        plt.ylabel('Varince of %s parameter' % d)
-        plt.vlines(index_min, plt.ylim()[0], plt.ylim()[1], color='r')
-        print plt.ylim()[0], plt.ylim()[1]
-    #'''
-        
+            
     colors = ['b', 'g', 'c']
     components = ['d1', 'd2', 'd3']
     plt.figure()
@@ -53,7 +40,6 @@ if __name__ == '__main__':
     plt.xlabel('Value of threshold')
     plt.ylabel('Varince')
     plt.vlines(index_min, plt.ylim()[0], plt.ylim()[1], color='r')
-    print plt.ylim()[0], plt.ylim()[1]
         
     plt.figure()
     plt.plot(top_limits, s1, label='Sum of variances before removing outliers')
@@ -62,7 +48,7 @@ if __name__ == '__main__':
     plt.xlabel('Value of threshold')
     plt.ylabel('Sum of varinces')
     plt.vlines(index_min, plt.ylim()[0], plt.ylim()[1], color='r')
-    print plt.ylim()[0], plt.ylim()[1]
+
               
     
     
