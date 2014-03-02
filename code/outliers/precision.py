@@ -37,6 +37,10 @@ def get_oib_data_pandas(oib_data):
 def get_variances(oib, components):
     df = get_oib_data_pandas(oib)
     return [df[c].var() for c in components]
+    
+def get_means(oib, components):
+    df = get_oib_data_pandas(oib)
+    return [df[c].mean() for c in components]
 
 def precision_test(noe, top_limits, components=COLNAMES):
     
@@ -55,8 +59,21 @@ def precision_test(noe, top_limits, components=COLNAMES):
     
     return vars_df_1, vars_df_2
     
-def abs_value_test(noe, top_limits):
-    pass
+def abs_value_test(noe, top_limits, components=COLNAMES):
+    means_1 = []
+    means_2 = []    
+    
+    for tlim in top_limits:    
+        noe.remove_outliers(tlim)
+        current_means_1 = get_means(noe.old_object_in_base, components)               
+        current_means_2 = get_means(noe.new_object_in_base, components)               
+        means_1.append(current_means_1)
+        means_2.append(current_means_2)
+            
+    means_df_1 = pd.DataFrame(np.array(means_1), columns=components, index=top_limits)        
+    means_df_2 = pd.DataFrame(np.array(means_2), columns=components, index=top_limits)    
+    
+    return means_df_1, means_df_2
     
     
     
