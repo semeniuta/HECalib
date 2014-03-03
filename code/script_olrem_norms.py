@@ -17,7 +17,7 @@ if __name__ == '__main__':
     noe = NormsOutliersEliminator(datafile)    
     print noe.old_norms    
     
-    top_limits = [0.01*i for i in range(50, math.trunc(100*max(noe.old_norms)))]
+    top_limits = [0.01*i for i in range(43, math.trunc(100*max(noe.old_norms)))]
     
     ''' Variances '''    
     v1, v2 = precision.precision_test(noe, top_limits, components=['d1', 'd2', 'd3'])
