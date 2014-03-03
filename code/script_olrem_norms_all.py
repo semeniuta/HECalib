@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Remove outliers and see how it affects the result
+Analyze the varinces ragrading all components of the sensor-in-base matrix
 '''
 
 import math

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 '''
-Remove outliers and see how it affects the result
+Try to acclount for both variability and central tendency by 
+constructing box plots
 '''
 
 import math
@@ -25,5 +26,5 @@ if __name__ == '__main__':
         noe.remove_outliers(tl)
         samples.append(precision.get_oib_data_pandas(noe.new_object_in_base)[component])
     
-     
+    plt.boxplot(samples)
     

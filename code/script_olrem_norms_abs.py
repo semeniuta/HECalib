@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Remove outliers and see how it affects the result
+Absolute value test
 '''
 
 import math
