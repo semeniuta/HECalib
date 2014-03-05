@@ -11,7 +11,7 @@ if __name__ == '__main__':
     doe = DistAngOutliersEliminator(datafile)
     
     n = noe.old_norms
-    d = doe.new_distances
+    d = doe.old_distances
     
     
 
