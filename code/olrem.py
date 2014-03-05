@@ -63,15 +63,34 @@ def calc_norms(AB, X, norm_func):
     norms = []
     matrices = []
     for A, B in AB:        
-        Z1 = A * X        
-        Z2 = X * B
-        Z = m3di.extract(Z1) - m3di.extract(Z2)
-        norm = norm_func(Z)
+        AX = A * X        
+        XB = X * B
+        M = m3di.extract(AX) - m3di.extract(XB)
+        norm = norm_func(M)
         
         norms.append(norm)
-        matrices.append(Z)        
+        matrices.append(M)        
             
     return matrices, norms
+    
+def calc_distang(AB, X):
+    '''
+    Calculate distance and angle among the two transforms AX and XB
+    XB.orient.ang_dist(AX.orient)
+    XB.pos.dist(AX.pos)
+    '''
+    
+    distances = []
+    angles = []
+    for A, B in AB:
+        AX = A * X
+        XB = X * B
+        dist = XB.pos.dist(AX.pos)
+        ang = XB.orient.ang_dist(AX.orient)
+        distances.append(dist)
+        angles.append(ang)
+    
+    return distances, angles
     
 def process_pairs(pairs, AB, AB_pairs, CalibratorClass, norm_func):
 

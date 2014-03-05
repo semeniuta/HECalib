@@ -8,7 +8,15 @@ from outliers import precision
 from outliers.basic import BasicOutliersEliminator
 
 class NormsOutliersEliminator(BasicOutliersEliminator):
+    
+    def __init__(self, datafile):
+        BasicOutliersEliminator.__init__(self, datafile)
+        old_matrices, self.old_norms = olrem.calc_norms(self.AB, self.old_sif, params.norm_func)
         
+        '''Calculate object to base transform: R*X*inv(V) '''
+        self.old_object_in_base = precision.get_oib_data(self.pose_pairs, self.old_sif)
+
+    
     def remove_outliers(self, top_limit):
             
         ''' 
