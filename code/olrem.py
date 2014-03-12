@@ -73,13 +73,8 @@ def calc_norms(AB, X, norm_func):
             
     return matrices, norms
     
-def calc_distang(AB, X):
-    '''
-    Calculate distance and angle among the two transforms AX and XB
-    XB.orient.ang_dist(AX.orient)
-    XB.pos.dist(AX.pos)
-    '''
-    
+def evaluate_movement_pairs(AB, X):
+     
     distances = []
     angles = []
     for A, B in AB:
